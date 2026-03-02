@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WELCOME - Shakir's Solution</title>
+    <!-- FontAwesome আইকন লাইব্রেরি -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com">
+    <style>
+        /* ১. অ্যানিমেটেড ব্যাকগ্রাউন্ড */
+        body {
+            background: linear-gradient(-45deg, #87CEEB, #e0f7fa, #ffffff, #b2ebf2);
+            background-size: 400% 400%;
+            animation: gradientBG 8s ease infinite;
+            min-height: 100vh;
+            margin: 0;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* ২. ওয়েলকাম বক্স */
+        .welcome-box {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 40px;
+            border-radius: 15px;
+            background: linear-gradient(90deg, #ff4d4d, #ff944d, #4d94ff, #4dff88);
+            background-size: 300% 300%;
+            animation: bannerAnimate 4s linear infinite;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        @keyframes bannerAnimate {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .welcome-box h2 {
+            margin: 0; color: white; letter-spacing: 3px; text-transform: uppercase; font-weight: bold;
+        }
+
+        /* ৩. কন্টাক্ট বাটন */
+        .contact-btn-wrapper { 
+            position: absolute; 
+            top: 20px; 
+            right: 40px;
+            z-index: 100; 
+        }
+        #contact-btn {
+            background: linear-gradient(45deg, #ff3366, #ff6b6b);
+            color: white; border: none; padding: 12px 25px; border-radius: 50px;
+            font-weight: bold; font-size: 16px; cursor: pointer; display: flex; align-items: center; gap: 10px;
+            box-shadow: 0 5px 15px rgba(255, 51, 102, 0.4);
+            transition: 0.3s;
+        }
+        #contact-btn:hover { transform: translateY(-3px); }
+
+        /* ৪. সাবমিট বাটন অ্যানিমেশন */
+        #submit-btn {
+            padding: 10px 25px;
+            background: linear-gradient(45deg, #87CEEB, #5fb9e0);
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            animation: pulse 2s infinite; /* পালস অ্যানিমেশন */
+            margin-left: 5px;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        #submit-btn:hover {
+            background: #5fb9e0;
+            animation: none;
+            transform: scale(1.1);
+        }
+
+        /* ৫. টেক্সট পজিশন ঠিক করা (Spacing) */
+        .intro-section {
+            margin-top: 40px; /* লেখাটিকে একটু নিচে নামানো হয়েছে */
+        }
+
+        .shakir-3d {
+            font-size: 50px; color: red; font-weight: bold; display: inline-block;
+            margin-top: 10px;
+            text-shadow: 1px 1px 0px #b30000, 2px 2px 0px #b30000, 5px 5px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        /* ৬. নেক্সট বাটন */
+        .next-btn {
+            margin-top: 20px;
+            padding: 12px 35px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(45deg, #4d94ff, #357ae8);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(77, 148, 255, 0.4);
+        }
+
+        /* মডাল এবং অন্যান্য */
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(5px); z-index: 999;
+            justify-content: center; align-items: center;
+        }
+        .modal-content {
+            background: white; padding: 30px; border-radius: 20px; width: 90%; max-width: 350px;
+            text-align: center; position: relative; animation: slideUp 0.4s ease-out;
+        }
+        .social-links { display: flex; flex-direction: column; gap: 15px; margin-top: 20px; }
+        .social-btn { text-decoration: none; padding: 12px; border-radius: 10px; font-weight: bold; color: white; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .fb { background: #1877F2; } .yt { background: #FF0000; } .tw { background: #000000; } .in { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+
+        #second-page {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            z-index: 1000; justify-content: center; align-items: center; flex-direction: column;
+        }
+
+        .footer { background-color: red; color: white; padding: 15px; font-weight: bold; width: 100%; margin-top: auto; }
+        @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    </style>
+</head>
+<body>
+
+    <div id="main-content">
+        <div class="contact-btn-wrapper">
+            <button id="contact-btn" onclick="openModal()">
+                <i class="fa-solid fa-paper-plane"></i> Contact
+            </button>
+        </div>
+
+        <div class="content">
+            <div class="welcome-box"><h2>WELCOME</h2></div>
+            <h1 style="margin-bottom: 5px;"><i>You can share your problem</i></h1>
+            <p>What's your problem?????</p>
+            
+            <img src="images.jpg" alt="Shakir" style="width: 150px; border-radius: 15px; margin: 10px auto; display: block;">
+
+            <div style="background: white; width: fit-content; margin: 20px auto; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                <input type="text" id="user-input" placeholder="এখানে লিখুন..." 
+                       style="padding:10px; width:200px; border-radius:5px; border:1px solid #ccc; outline:none;"
+                       onkeypress="checkEnter(event)"> <!-- এন্টার কী চেক -->
+                <button id="submit-btn" onclick="handleProblem()">Submit</button>
+                <div id="output" style="margin-top:10px; font-weight:bold;"></div>
+            </div>
+
+            <!-- ইনট্রো সেকশন - মার্জিন বাড়ানো হয়েছে -->
+            <div class="intro-section">
+                <p style="font-size: 18px; margin-bottom: 0;">Firstly I introduce myself....</p>
+                <span class="shakir-3d">Shakir</span>
+                <br>
+                <button class="next-btn" onclick="showNextPage()">
+                    Next <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- সোশ্যাল মোডাল -->
+    <div class="modal-overlay" id="socialModal">
+        <div class="modal-content">
+            <span onclick="closeModal()" style="position:absolute; right:15px; top:10px; cursor:pointer; font-size:25px;">&times;</span>
+            <h2>Connect with Me</h2>
+            <div class="social-links">
+                <a href="https://www.facebook.com" target="_blank" class="social-btn fb"><i class="fab fa-facebook-f"></i> Facebook</a>
+                <a href="https://www.youtube.com" target="_blank" class="social-btn yt"><i class="fab fa-youtube"></i> YouTube</a>
+                <a href="https://x.com" target="_blank" class="social-btn tw"><i class="fab fa-twitter"></i> Twitter</a>
+                <a href="https://www.instagram.com" target="_blank" class="social-btn in"><i class="fab fa-instagram"></i> Instagram</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="second-page">
+        <h1>আপনি আর কি কি জানতে চান??</h1>
+        <button onclick="hideNextPage()" style="margin-top:20px; padding:12px 25px; border-radius:10px; border:none; background:#ff4d4d; color:white; cursor:pointer; font-weight:bold;">ফিরে যান</button>
+    </div>
+
+    <div class="footer">আল্লাহ্‌ তোমাকে যা দিয়েছে তা নিয়ে সন্তুষ্ট থাক</div>
+
+    <script>
+        function openModal() { document.getElementById('socialModal').style.display = 'flex'; }
+        function closeModal() { document.getElementById('socialModal').style.display = 'none'; }
+        function showNextPage() { document.getElementById('second-page').style.display = 'flex'; }
+        function hideNextPage() { document.getElementById('second-page').style.display = 'none'; }
+
+        // এন্টার কি চাপলে সাবমিট হওয়ার ফাংশন
+        function checkEnter(event) {
+            if (event.key === "Enter") {
+                handleProblem();
+            }
+        }
+
+        function handleProblem() {
+            const input = document.getElementById("user-input");
+            const output = document.getElementById("output");
+            const text = input.value.trim();
+            if (text === "VALO LAGE NA") { output.innerHTML = "<span style='color:red;'>কিছু লিখুন!</span>"; return; }
+            output.innerHTML = "Shakir: আমি বুঝতে পেরেছি। ধৈর্য ধরুন!";
+            if (text === "KI KORBO BOLO") { output.innerHTML = "<span style='color:red;'>কিছু লিখুন!</span>"; return; }
+            output.innerHTML = "Shakir: MARA KHAW!";
+
+           
+            input.value = "";
+        }
+    </script>
+<script>
+function handleProblem() {
+    const input = document.getElementById("user-input");
+    const output = document.getElementById("output");
+
+    let text = input.value.trim().toLowerCase();
+
+    if (text === "") {
+        output.innerHTML = "<span style='color:red;'>কিছু লিখুন!</span>";
+        return;
+    }
+
+    // Problems & Solutions
+    const problems = {
+
+        depression: {
+            keywords: ["valo lage na", "ভালো লাগে না", "mon kharap", "মন খারাপ", "depressed"],
+            answer: "Shakir: সবসময় খারাপ সময় থাকে না। নিজের পছন্দের কিছু করুন, কারও সাথে কথা বলুন। 💙"
+        },
+
+        study: {
+            keywords: ["porte iccha kore na", "পড়তে ইচ্ছা করে না", "study korte parchi na", "exam tension", "exam"],
+            answer: "Shakir: ছোট ছোট ভাগ করে পড়ুন। ২৫ মিনিট পড়ুন, ৫ মিনিট বিরতি নিন। Focus বাড়বে 📚"
+        },
+
+        money: {
+            keywords: ["taka nai", "টাকা নাই", "money problem", "arthik somossa", "অর্থের সমস্যা"],
+            answer: "Shakir: খরচের হিসাব লিখে রাখুন। অপ্রয়োজনীয় খরচ কমান। ধীরে ধীরে ঠিক হবে 💰"
+        },
+
+        relationship: {
+            keywords: ["breakup", "gf chole gese", "bf chole gese", "সম্পর্ক ভেঙে গেছে"],
+            answer: "Shakir: সময়ই সবচেয়ে বড় healer। নিজেকে সময় দিন, নিজের উন্নতিতে মন দিন ❤️"
+        },
+
+        health: {
+            keywords: ["sorir kharap", "শরীর খারাপ", " অসুস্থ", "ill", "sick"],
+            answer: "Shakir: বিশ্রাম নিন, পানি বেশি পান করুন। প্রয়োজনে ডাক্তারের পরামর্শ নিন 🩺"
+        }
+
+    };
+
+    let found = false;
+
+    for (let key in problems) {
+        for (let word of problems[key].keywords) {
+            if (text.includes(word)) {
+                output.innerHTML = problems[key].answer;
+                found = true;
+                break;
+            }
+        }
+        if (found) break;
+    }
+
+    if (!found) {
+        output.innerHTML = "Shakir: আমি পুরোপুরি বুঝতে পারিনি। আরেকটু বিস্তারিত বলুন।";
+    }
+
+    input.value = "";
+}
+</script>
+
+<script>
+
+// Enter press করলে function call হবে
+document.getElementById("user-input").addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        handleProblem();
+    }
+});
+
+</script>
+
+
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyAlzgOeqZrArhFgv4GoAVK0IHvsdFjVFw4",
+  authDomain: "shakir-671aa.firebaseapp.com",
+  projectId: "shakir-671aa",
+  storageBucket: "shakir-671aa.firebasestorage.app",
+  messagingSenderId: "409526002935",
+  appId: "1:409526002935:web:3477680e6581a037de9ff2",
+  measurementId: "G-12HSJFLBY3"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+</body>
+</html>
